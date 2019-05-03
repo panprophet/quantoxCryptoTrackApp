@@ -1,0 +1,17 @@
+<p> currencies-list works! </p>
+<div class="table">
+  <div class="table-row flex align-items-center"
+       *ngFor="let currency of curency_list ">
+    <div>{{ currency.name }}</div>
+    <div>{{ currency.symbol }}</div>
+    <div>{{ currency.quote.USD.price }}</div>
+    <div>{{ currency.quote.USD.percent_change_1h }}</div>
+    <div>
+      <form>
+        <div><input type=""></div>
+        <div><button type="button">Submit</button></div>
+      </form>
+    </div>
+    <div>{{my_value}}</div>
+  </div>
+</div>
