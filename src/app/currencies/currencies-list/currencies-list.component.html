@@ -1,17 +1,32 @@
-<p> currencies-list works! </p>
-<div class="table">
-  <div class="table-row flex align-items-center"
-       *ngFor="let currency of curency_list ">
-    <div>{{ currency.name }}</div>
-    <div>{{ currency.symbol }}</div>
-    <div>{{ currency.quote.USD.price }}</div>
-    <div>{{ currency.quote.USD.percent_change_1h }}</div>
-    <div>
-      <form>
-        <div><input type=""></div>
-        <div><button type="button">Submit</button></div>
-      </form>
+<div class="table flex flex-column align-items-center">
+  <div class="table-header flex align-items-center justify-content-center border background-grey-light">
+    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">Name</div>
+    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">Short name</div>
+    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">$ Value</div>
+    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">last 24h</div>
+    <div class="table-header-field amount text-center font-bold margin-xxl--right-10 border">Amount you own</div>
+    <div class="table-header-field value text-center font-bold border">$ value of your coin</div>
+  </div>
+  <div *ngFor="let currency of curency_list; let i = index;">
+    <div [ngClass]="{'background-white': i%2}"
+         class="table-row flex align-items-center background-grey-light">
+      <div class="table-row-field text-center margin-xxl--right-10"
+           (click)="opetDetails(currency.id)">{{ currency.name }}</div>
+      <div class="table-row-field text-center margin-xxl--right-10">{{ currency.symbol }}</div>
+      <div class="table-row-field text-center margin-xxl--right-10">$ {{ (currency.quote.USD.price).toFixed(2) }}</div>
+      <div [ngClass]="{'font-green': currency.quote.USD.percent_change_1h > 0, 'font-red': currency.quote.USD.percent_change_1h <= 0 }"
+           class="table-row-field text-center margin-xxl--right-10">{{ currency.quote.USD.percent_change_1h }} %</div>
+      <div class="table-row-field amount text-center margin-xxl--right-10">
+        <div><input [(ngModel)]="my_quantity[i]"
+                 ngDefaultControl
+                 (keyup)="calc_my_value(currency.id)"
+                 class="input-form"></div>
+        <div class="text-center"><button [ngClass]="{'button-small-disabled': !my_quantity[i]}"
+                  class="button-small"
+                  (click)="save_value(currency.id, my_quantity[i])"
+                  type="button">Submit</button></div>
+      </div>
+      <div class="table-row-field value text-center">$ {{ my_value[i] === 0 ? '0.00' : my_value[i].toFixed(2) }}</div>
     </div>
-    <div>{{my_value}}</div>
   </div>
 </div>

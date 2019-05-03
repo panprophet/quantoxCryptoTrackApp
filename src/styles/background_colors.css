@@ -1,0 +1,29 @@
+.background-black {
+  background-color: #000000;
+}
+.background-black-light {
+  background-color: #212224;
+}
+.background-purple {
+  background-color: #291644;
+}
+.background-grey {
+  background-color: #383838;
+}
+.background-grey-light {
+  background-color: #F6F6F6;
+}
+.background-white {
+  background-color: #FFFFFF;
+}
+.active-link {
+  content: "";
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #291644;
+}
+.active-marker {
+  background-color: #291644;
+}
+.active-tab {
+  color: #291644;
+}

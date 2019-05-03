@@ -1,0 +1,11 @@
+.input-form {
+  width: 200px;
+  height: 20px;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #212224;
+  margin: 5px;
+}
+.input-form:active {
+  background-color: #FFFFFF;
+}

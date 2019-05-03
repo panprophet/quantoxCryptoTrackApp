@@ -1,0 +1,62 @@
+@import 'variables';
+
+.menu {
+  &-main {
+    height: 3.75rem;
+    width: 100%;
+    position: fixed;
+    z-index: 9999999;
+    &--right {
+      height: 100%;
+      &--search {
+        &-icon {
+          height: 0.875rem;
+          width: 0.875rem;
+          padding: 7%;
+          background: @white;
+          border-radius: 50%;
+          border: 1px solid @purple;
+          &:hover {
+            background: @purple;
+            border: 1px solid @white;
+            .loopa {
+              fill: @white;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-second {
+    height: 3.75rem;
+    width: 100%;
+    position: fixed;
+    z-index: 9999999;
+    top: 3.75rem;
+
+  }
+}
+.logo {
+  &-white {
+    path {
+      fill: @white;
+      transition: fill 0.8s ease-in-out;
+    }
+  }
+  &-purple {
+    path {
+      fill: @purple;
+      transition: fill 0.8s ease-in-out;
+    }
+  }
+}
+.footer {
+  width: 100%;
+  &-top {
+
+  }
+  &-bottom {
+    height: 3.4375rem;
+    background-color: @purple;
+  }
+}

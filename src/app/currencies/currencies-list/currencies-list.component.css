@@ -1,3 +1,19 @@
 .table {
   width: 100%;
 }
+.table-header-field {
+  width: 120px;
+}
+.table-row {
+  height: 60px;
+  width: 100%;
+}
+.table-row-field {
+  width: 120px;
+}
+.amount {
+  width: 212px;
+}
+.value {
+  width: 200px;
+}

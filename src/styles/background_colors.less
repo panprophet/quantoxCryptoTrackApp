@@ -1,0 +1,39 @@
+@import 'variables';
+// background colors
+.background {
+  &-black {
+    background-color: @black;
+
+    &-light {
+      background-color: @black-light;
+    }
+    // &-lighter {
+    //   background-color: @black-lighter;
+    // }
+  }
+  &-purple{
+    background-color: @purple;
+  }
+  &-grey {
+     background-color: @grey-dark;
+    &-light {
+      background-color: @grey-light;
+    }
+  }
+  &-white {
+      background-color: @white;
+  }
+}
+.active {
+  &-link {
+    content: "";
+    padding-bottom: 3rem;
+    border-bottom: 1px solid @purple;
+  }
+  &-marker {
+    background-color: @purple;
+  }
+  &-tab {
+    color: @purple;
+  }
+}

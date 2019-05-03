@@ -1,0 +1,101 @@
+@import 'variables';
+// buttons
+.button {
+  &-big {
+    height: 3.5625rem;
+    width: 15.9375rem;
+    background-color: @purple;
+    border: 1px solid @purple;
+    transition: all 0.4s ease-in-out;
+    a {
+      height: inherit;
+      width: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &:hover {
+      background-color: @green;
+      border: 1px solid @green;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+  &-midd {
+    height: 2.813rem;
+    width: 9.0625rem;
+    background-color: @purple;
+    border: 1px solid @purple;
+    transition: all 0.4s ease-in-out;
+    a {
+      height: inherit;
+      width: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &:hover {
+      background-color: @green;
+      border: 1px solid @green;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+  &-small {
+    height: 20px;
+    width: 200px;
+    background-color: @grey-lighter;
+    border: 1px solid @grey-mid;
+    color: @black;
+    transition: all 0.4s ease-in-out;
+    &-disabled {
+      pointer-events: none;
+    }
+    &:hover {
+      background-color:  @grey-mid;
+      border: 1px solid @grey-lighter;
+      transition: all 0.4s ease-in-out;
+    }
+    :disabled {
+      background-color: @grey-lighter;
+      border: 1px solid @red;
+      color: @black;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+  &-grey {
+    height: 1.875rem;
+    width: 6rem;
+    background-color: @grey-mid;
+    border: 1px solid @grey-mid;
+    transition: all 0.4s ease-in-out;
+    a {
+      height: inherit;
+      width: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &:hover {
+      background-color: @green;
+      border: 1px solid @green;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+  &-border {
+    &-purple {
+      border: 1px solid @purple;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .button{
+    &-big {
+      height: 3.513rem;
+      width: 10.063rem;
+    }
+    &-midd {
+      height: 2.313rem;
+      width: 6.375rem;
+    }
+  }
+}
