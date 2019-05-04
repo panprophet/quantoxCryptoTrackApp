@@ -11,7 +11,8 @@ export class CurrenciesService {
 
   get_currencies() {
     const url = 'table/listing';
-    return this.httpClient.get(this.url + url);
+    let params = new HttpParams().set('sort', 'price').set('limit', '50');
+    return this.httpClient.get(this.url + url, { params: params });
   };
 
 };
