@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { CurrenciesService } from '../currencies.service';
 
@@ -16,7 +17,7 @@ export class CurrenciesListComponent implements OnInit {
   my_quantity: number[];
 
   coin_value: any [] = [];
-  constructor(private currenciesService: CurrenciesService, public loaderService: LoaderService, ) { }
+  constructor(private currenciesService: CurrenciesService, public loaderService: LoaderService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.currencies_get().then(()=>{
@@ -75,7 +76,7 @@ export class CurrenciesListComponent implements OnInit {
     });
     return session;
   }
-  opetDetails(id) {
-
+  openDetails(id) {
+    this.router.navigate(['currencies/detail', id] );
   }
 }

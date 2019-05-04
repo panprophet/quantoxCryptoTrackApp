@@ -10,8 +10,8 @@
   <div *ngFor="let currency of curency_list; let i = index;">
     <div [ngClass]="{'background-white': i%2}"
          class="table-row flex align-items-center background-grey-light">
-      <div class="table-row-field text-center margin-xxl--right-10"
-           (click)="opetDetails(currency.id)">{{ currency.name }}</div>
+      <div class="table-row-field text-center margin-xxl--right-10 text-hover"
+           (click)="openDetails(currency.id)">{{ currency.name }}</div>
       <div class="table-row-field text-center margin-xxl--right-10">{{ currency.symbol }}</div>
       <div class="table-row-field text-center margin-xxl--right-10">$ {{ (currency.quote.USD.price).toFixed(2) }}</div>
       <div [ngClass]="{'font-green': currency.quote.USD.percent_change_1h > 0, 'font-red': currency.quote.USD.percent_change_1h <= 0 }"

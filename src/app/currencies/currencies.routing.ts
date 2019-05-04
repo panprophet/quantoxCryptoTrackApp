@@ -8,10 +8,12 @@ import { CurrenciesDetailComponent} from '../currencies/currencies-detail/curren
 const routes: Routes = [
   {
     path: '',
-    component: CurrenciesListComponent,
+    component: CurrenciesComponent,
+
     children: [
-      // { path: '', component: CurrenciesListComponent },
-      { path: ':currency_id/detail', component: CurrenciesDetailComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'list'},
+      { path: 'list', component: CurrenciesListComponent },
+      { path: 'detail/:currency_id', component: CurrenciesDetailComponent },
     ],
   },
 ];

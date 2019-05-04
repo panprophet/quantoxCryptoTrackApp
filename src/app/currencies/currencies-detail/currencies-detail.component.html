@@ -1,3 +1,22 @@
-<p>
-  currencies-detail works!
-</p>
+<div class="single flex flex-column align-items-center w-100">
+  <div class="single-row flex align-items-center justify-content-center w-100">
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Name</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Symbol</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Slug</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Rank</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Circulating supply</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Total supply</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Date added</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center font-bold">Last updated</div>
+  </div>
+  <div class="single-row flex align-items-center justify-content-center w-100">
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ currency.name }}</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ currency.symbol }}</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ currency.slug }}</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ currency.cmc_rank }}</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ format_number(currency.circulating_supply) }}</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ format_number(currency.total_supply) }}</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ format_date(currency.date_added) }}</div>
+    <div class="single-row--cell margin-xxl--left-18 text-center">{{ format_date(currency.last_updated) }}</div>
+  </div>
+</div>
