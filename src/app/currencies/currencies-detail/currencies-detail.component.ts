@@ -20,7 +20,7 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
 
   currencies: any [] = [];
   currency: any [] = [];
-
+  period: number = 1;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, public loaderService: LoaderService, private currenciesService: CurrenciesService ) { }
 
   ngOnInit() {
@@ -38,6 +38,16 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
   format_number(number) {
     return number.toFixed(2);
   };
+  precentage_change(){
+    if(this.period === 1 ) {
+      return this.format_number(this.currency['quote'].USD.percent_change_1h);
+    } else if(this.period === 7) {
+      return this.format_number(this.currency['quote'].USD.percent_change_7d);
+    } else if (this.period === 24 ) {
+      return this.format_number(this.currency['quote'].USD.percent_change_24h);
+    }
+
+  }
   async subscribe_id() {
     let sub_id = new Promise((resolve, reject) => {
       this.loaderService.viewLoader(true);
