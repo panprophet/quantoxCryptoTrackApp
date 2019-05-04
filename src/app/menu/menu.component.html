@@ -1,0 +1,11 @@
+<div class="menu-main flex align-items-center justify-content-between background-purple">
+  <div class="menu-main--left font-24 margin-xxl--left-24">
+    <div *ngIf="url === 'detail'"
+         class="flex align-items-center">
+      <span class="text-hover"><img src="assets/images/arrow.svg"
+             (click)="back_to_list()"></span>
+      <span class="font-18 font-white">Go back</span>
+    </div>
+  </div>
+  <div class="menu-main--right font-24 font-white margin-xxl--right-24">Marko Ilić Quantox test</div>
+</div>

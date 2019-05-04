@@ -1,3 +1,6 @@
+.single {
+  position: relative;
+}
 .single-row {
   height: 60px;
 }

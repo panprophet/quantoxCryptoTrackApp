@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { AppRouting } from '../app/app.routing';
 import { LoaderComponent } from '../app/loader/loader.component';
 import { LoaderService } from '../app/loader/loader.service';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoaderComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
