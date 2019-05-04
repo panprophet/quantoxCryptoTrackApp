@@ -20,6 +20,7 @@
         <div><input [(ngModel)]="my_quantity[i]"
                  ngDefaultControl
                  (keyup)="calc_my_value(currency.id)"
+                 (keyup.enter)="save_value(currency.id, my_quantity[i])"
                  class="input-form"></div>
         <div class="text-center"><button [ngClass]="{'button-small-disabled': !my_quantity[i]}"
                   class="button-small"

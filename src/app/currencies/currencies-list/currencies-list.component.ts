@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CurrenciesService } from '../currencies.service';
 
+import { LoaderService } from '../../loader/loader.service';
+
 @Component({
   selector: 'app-currencies-list',
   templateUrl: './currencies-list.component.html',
@@ -14,7 +16,7 @@ export class CurrenciesListComponent implements OnInit {
   my_quantity: number[];
 
   coin_value: any [] = [];
-  constructor(private currenciesService: CurrenciesService, ) { }
+  constructor(private currenciesService: CurrenciesService, public loaderService: LoaderService, ) { }
 
   ngOnInit() {
     this.currencies_get().then(()=>{
@@ -24,6 +26,7 @@ export class CurrenciesListComponent implements OnInit {
 
   async currencies_get() {
     let get_em_all = new Promise((resolve, reject) => {
+      this.loaderService.viewLoader(true);
       this.currenciesService.get_currencies().subscribe(
         data => {
           console.log(data['data']);
@@ -32,9 +35,11 @@ export class CurrenciesListComponent implements OnInit {
           this.my_quantity = new Array(data['data'].length);
           this.curency_list = data['data'];
           resolve(true);
+          this.loaderService.viewLoader(false);
         },
         err => {
           reject();
+          this.loaderService.viewLoader(false);
         }
       );
 
