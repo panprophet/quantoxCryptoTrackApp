@@ -14,7 +14,7 @@ export class CurrenciesService {
  */
   get_currencies(page, show) {
     const url = 'table/listing';
-    const start = page === 1 ? page : ((page*10)-11);
+    const start = page === 1 ? page : ((page*10)-9);
     const limit = show;
     const params = new HttpParams().set('start', start).set('sort', 'price').set('limit', limit);
     // const params = new HttpParams().set('start', '1').set('sort', 'price').set('limit', '50');
