@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy,} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { CurrenciesService } from '../currencies.service';
@@ -19,6 +19,14 @@ export class CurrenciesListComponent implements OnInit {
   coin_value: any [] = [];
   pages: any = {};
   page = 1;
+  regex = RegExp('^[0-9]*$');
+  showTip = false;
+
+  @ViewChild('toolTip')
+  toopTip: ElementRef;
+  tooltipTop: number;
+  tooltipLeft: number;
+
   constructor(private currenciesService: CurrenciesService, public loaderService: LoaderService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -74,10 +82,34 @@ export class CurrenciesListComponent implements OnInit {
     });
     return get_em_all;
   };
-  calc_my_value(id) {
+  check_input(input){
+    if(this.regex.test(input)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  calc_my_value(id, event) {
+
     this.curency_list.forEach((currency, index) => {
       if (currency.id === id) {
-        this.my_value[index] = currency.quote.USD.price * this.my_quantity[index];
+        if(this.check_input(this.my_quantity[index])) {
+          this.my_value[index] = currency.quote.USD.price * this.my_quantity[index];
+          if(this.showTip) {
+            this.showTip = false;
+          }
+        } else {
+          this.my_quantity[index] = 0;
+          this.showTip = true;
+          setTimeout(() => {
+            if(event ) {
+                  this.tooltipTop = event.target.offsetTop;
+                  this.tooltipLeft = event.target.offsetLeft;
+                  this.toopTip.nativeElement.style.top = '' + (event.target.offsetTop + 30) + 'px';
+                  this.toopTip.nativeElement.style.left = '' + (event.target.offsetLeft ) + 'px';
+            }
+          }, 100);
+        }
       }
     });
   }
@@ -94,7 +126,7 @@ export class CurrenciesListComponent implements OnInit {
           for (let i = 0; i < this.coin_value.length; i++) {
             if (currency.id === this.coin_value[i].currency_id) {
               this.my_quantity[index] = this.coin_value[i].quantity;
-              this.calc_my_value(currency.id);
+              this.calc_my_value(currency.id , null);
             }
           }
         });

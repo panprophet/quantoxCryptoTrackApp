@@ -9,6 +9,14 @@
     color: #FFD700;
   }
 }
+.font-12 {
+  font-size: 0.75rem;
+  line-height: 0.9rem;
+}
+.font-12 * {
+  font-size: inherit;
+  line-height: inherit;
+}
 .font-14 {
   font-size: 0.875rem;
   line-height: 1.5rem;

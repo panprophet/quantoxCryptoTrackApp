@@ -20,7 +20,7 @@
       <div class="table-row-field amount text-center margin-xxl--right-10">
         <div><input [(ngModel)]="my_quantity[i]"
                  ngDefaultControl
-                 (keyup)="calc_my_value(currency.id)"
+                 (keyup)="calc_my_value(currency.id, $event)"
                  (keyup.enter)="save_value(currency.id, my_quantity[i])"
                  class="input-form"></div>
         <div class="text-center"><button [ngClass]="{'button-small-disabled': !my_quantity[i]}"
@@ -49,4 +49,9 @@
          class="paginator-page flex align-items-center justify-content-center font-14 text-center text-hover"
          (click)="set_page(5)">5</div>
   </div>
+</div>
+<div *ngIf="showTip"
+     #toolTip
+     class="tip flex align-items-center justify-content-center background-grey-mid border-black">
+  <div class="flex align-items-center justify-content-center font-12 font-red text-center">Amount must be number</div>
 </div>

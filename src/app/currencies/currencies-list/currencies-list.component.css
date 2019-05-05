@@ -29,3 +29,10 @@
   height: 100%;
   width: 60px;
 }
+.tip {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 3px;
+  z-index: 99999999;
+}
