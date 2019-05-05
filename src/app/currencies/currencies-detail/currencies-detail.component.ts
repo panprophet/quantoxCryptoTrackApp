@@ -67,7 +67,7 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
   async get_currency_details() {
     const get_it = new Promise((resolve, reject) => {
       this.loaderService.viewLoader(true);
-      this.currenciesService.get_currencies().subscribe(
+      this.currenciesService.get_currencies(1, '50').subscribe(
         data => {
           this.currencies = data['data'];
           this.currencies.forEach(currency => {

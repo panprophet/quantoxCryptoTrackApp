@@ -8,10 +8,17 @@ export class CurrenciesService {
 
   url = environment.url;
   constructor(private httpClient: HttpClient) {}
-
-  get_currencies() {
+/**
+ * @param page
+ * @param show
+ */
+  get_currencies(page, show) {
     const url = 'table/listing';
-    const params = new HttpParams().set('sort', 'price').set('limit', '50');
+    const start = page === 1 ? page : ((page*10)-11);
+    const limit = show;
+    const params = new HttpParams().set('start', start).set('sort', 'price').set('limit', limit);
+    // const params = new HttpParams().set('start', '1').set('sort', 'price').set('limit', '50');
+
     return this.httpClient.get(this.url + url, { params: params });
   };
 /**

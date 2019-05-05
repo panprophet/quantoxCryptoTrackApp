@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRouting } from '../app/app.routing';
-import { LoaderComponent } from '../app/loader/loader.component';
 import { LoaderService } from '../app/loader/loader.service';
+import { LoaderComponent } from '../app/loader/loader.component';
 import { MenuComponent } from './menu/menu.component';
 
 

@@ -22,11 +22,7 @@ export class CurrenciesListComponent implements OnInit {
   constructor(private currenciesService: CurrenciesService, public loaderService: LoaderService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.currencies_get().then(() => {
-      this.get_value().then(() => {
-        this.call_self();
-      });
-    });
+    this.get_all_data();
   }
   format_number(number) {
     const str_num = number.toString();
@@ -40,7 +36,7 @@ export class CurrenciesListComponent implements OnInit {
   };
   call_self() {
     setTimeout(() => {
-      this.currencies_get().then(() => {
+      this.currencies_get(this.page).then(() => {
         this.get_value().then(() => {
           this.call_self();
         });
@@ -49,21 +45,23 @@ export class CurrenciesListComponent implements OnInit {
   };
   set_page(page) {
     this.page = page;
+    this.get_all_data();
   }
-  showRow(index) {
-    if (index >= (this.page - 1) * 10  && index <= this.page * 10) {
-      return true;
-    }
+  async get_all_data() {
+    await this.currencies_get(this.page).then(() => {
+      this.get_value().then(() => {
+        this.call_self();
+      });
+    });
   }
-  async currencies_get() {
+  async currencies_get(page) {
     const get_em_all = new Promise((resolve, reject) => {
       this.loaderService.viewLoader(true);
-      this.currenciesService.get_currencies().subscribe(
+      this.currenciesService.get_currencies(page, '10').subscribe(
         data => {
           this.my_value = new Array(data['data'].length).fill(0);
           this.my_quantity = new Array(data['data'].length);
           this.curency_list = data['data'];
-          this.pages = Array(this.curency_list.length / 10).map(function(value, index) { return this.curency_list.length / 10; });
           resolve(true);
           this.loaderService.viewLoader(false);
         },
