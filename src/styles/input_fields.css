@@ -9,3 +9,6 @@
 .input-form:active {
   background-color: #FFFFFF;
 }
+.select-box {
+  width: 100%;
+}

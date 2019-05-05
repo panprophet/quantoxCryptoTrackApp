@@ -24,9 +24,7 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, public loaderService: LoaderService, private currenciesService: CurrenciesService ) { }
 
   ngOnInit() {
-    this.subscribe_id().then(()=>{
-      this.get_currency_details();
-    });
+    this.get_allData();
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -48,14 +46,21 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
     }
 
   }
+  get_allData() {
+    let get_all = new Promise((resolve, reject) => {
+      this.subscribe_id().then(()=>{
+        this.get_currency_details();
+      });
+      resolve(true);
+    });
+    return get_all;
+  }
   async subscribe_id() {
     let sub_id = new Promise((resolve, reject) => {
-      this.loaderService.viewLoader(true);
       this.sub = this.activatedRoute.params.subscribe(values => {
         this.curr_id = values['currency_id'];
       });
       resolve(true);
-      this.loaderService.viewLoader(false);
     })
     return sub_id;
   };
@@ -70,8 +75,6 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
             this.currency = currency;
             }
           });
-
-          console.log(this.currency);
           resolve(true);
           this.loaderService.viewLoader(false);
         },
@@ -80,7 +83,6 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
           this.loaderService.viewLoader(false);
         }
       );
-      resolve(true);
     });
     return get_it;
   };

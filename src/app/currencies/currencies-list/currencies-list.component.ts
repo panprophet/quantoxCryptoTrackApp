@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { CurrenciesService } from '../currencies.service';
@@ -10,31 +10,66 @@ import { LoaderService } from '../../loader/loader.service';
   templateUrl: './currencies-list.component.html',
   styleUrls: ['./currencies-list.component.css']
 })
-export class CurrenciesListComponent implements OnInit {
+export class CurrenciesListComponent implements OnInit, OnDestroy {
 
   curency_list: any[] = [];
   my_value: number[];
   my_quantity: number[];
 
   coin_value: any [] = [];
+  pages: any = {};
+  page: number = 1;
   constructor(private currenciesService: CurrenciesService, public loaderService: LoaderService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.currencies_get().then(()=>{
-      this.get_value();
+      this.get_value().then(()=>{
+        this.call_self();
+      });
     });
   }
+  ngOnDestroy() {
 
+  }
+  format_number(number) {
+    const str_num = number.toString();
+    if(str_num.indexOf('e') !== -1) {
+      const new_num = str_num.split('e');
+      const exp = parseInt(new_num[1]);
+      return Math.pow(new_num[0], exp).toFixed(2);
+    } else {
+      return number.toFixed(2);
+    }
+  };
+  call_self() {
+    setTimeout(()=>{
+      this.currencies_get().then(()=>{
+        this.get_value().then(()=>{
+          this.call_self();
+        });
+      });
+    }, 60000);
+  };
+  set_page(page) {
+    this.page = page;
+  }
+  showRow(index){
+    if(index >= (this.page-1)*10  && index <= this.page*10) {
+      return true;
+    }
+  }
   async currencies_get() {
     let get_em_all = new Promise((resolve, reject) => {
       this.loaderService.viewLoader(true);
       this.currenciesService.get_currencies().subscribe(
         data => {
-          console.log(data['data']);
+          console.log(data['data']); // <- obrisi nemoj da zaboravis
 
           this.my_value = new Array(data['data'].length).fill(0);
           this.my_quantity = new Array(data['data'].length);
           this.curency_list = data['data'];
+          // this.pages = Array(this.curency_list.length/10);
+          this.pages = Array(this.curency_list.length/10).map(function(value, index){return this.curency_list.length/10});
           resolve(true);
           this.loaderService.viewLoader(false);
         },

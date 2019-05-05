@@ -4,6 +4,9 @@
 .w-100--min {
   min-width: 100%;
 }
+.w-80 {
+  width: 80%;
+}
 .w-75 {
   width: 75%;
 }

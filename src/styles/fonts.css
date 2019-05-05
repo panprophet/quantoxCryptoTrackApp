@@ -1,3 +1,14 @@
+@keyframes shiny {
+  0% {
+    color: #FFD700;
+  }
+  50% {
+    color: #1a6b2c;
+  }
+  100% {
+    color: #FFD700;
+  }
+}
 .font-14 {
   font-size: 0.875rem;
   line-height: 1.5rem;
@@ -229,4 +240,7 @@
   }
 }
 @media screen and (max-width: 360px) {
+}
+.shiny {
+  animation: shiny 1.5s ease-in-out infinite;
 }

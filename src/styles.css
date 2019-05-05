@@ -85,6 +85,23 @@ a:active {
 .container {
   width: 100%;
 }
+.arrow-back {
+  fill: #FFFFFF;
+}
+.arrow-back :hover {
+  fill: #FFD700;
+}
+@keyframes shiny {
+  0% {
+    color: #FFD700;
+  }
+  50% {
+    color: #1a6b2c;
+  }
+  100% {
+    color: #FFD700;
+  }
+}
 .font-14 {
   font-size: 0.875rem;
   line-height: 1.5rem;
@@ -316,6 +333,9 @@ a:active {
   }
 }
 @media screen and (max-width: 360px) {
+}
+.shiny {
+  animation: shiny 1.5s ease-in-out infinite;
 }
 .flex {
   display: -webkit-box;
@@ -801,6 +821,9 @@ a:active {
 }
 .background-grey-light {
   background-color: #F6F6F6;
+}
+.background-grey-mid {
+  background-color: #C6C6C5;
 }
 .background-white {
   background-color: #FFFFFF;
@@ -1767,11 +1790,17 @@ a:active {
 .input-form:active {
   background-color: #FFFFFF;
 }
+.select-box {
+  width: 100%;
+}
 .w-100 {
   width: 100%;
 }
 .w-100--min {
   min-width: 100%;
+}
+.w-80 {
+  width: 80%;
 }
 .w-75 {
   width: 75%;
@@ -1887,13 +1916,8 @@ a:active {
   border-bottom: 1px solid #383838;
 }
 .menu-main {
-  height: 3.75rem;
-  width: 100%;
-  position: fixed;
-  z-index: 9999999;
-}
-.menu-main--right {
-  height: 100%;
+  height: 60px;
+  position: relative;
 }
 .menu-main--right--search-icon {
   height: 0.875rem;
@@ -1910,25 +1934,6 @@ a:active {
 .menu-main--right--search-icon:hover .loopa {
   fill: #FFFFFF;
 }
-.menu-second {
-  height: 3.75rem;
-  width: 100%;
-  position: fixed;
-  z-index: 9999999;
-  top: 3.75rem;
-}
-.logo-white path {
-  fill: #FFFFFF;
-  transition: fill 0.8s ease-in-out;
-}
-.logo-purple path {
-  fill: #291644;
-  transition: fill 0.8s ease-in-out;
-}
-.footer {
-  width: 100%;
-}
-.footer-bottom {
-  height: 3.4375rem;
-  background-color: #291644;
+.menu-main--left {
+  width: 150px;
 }

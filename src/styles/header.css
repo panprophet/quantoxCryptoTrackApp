@@ -1,11 +1,6 @@
 .menu-main {
-  height: 3.75rem;
-  width: 100%;
-  position: fixed;
-  z-index: 9999999;
-}
-.menu-main--right {
-  height: 100%;
+  height: 60px;
+  position: relative;
 }
 .menu-main--right--search-icon {
   height: 0.875rem;
@@ -22,25 +17,6 @@
 .menu-main--right--search-icon:hover .loopa {
   fill: #FFFFFF;
 }
-.menu-second {
-  height: 3.75rem;
-  width: 100%;
-  position: fixed;
-  z-index: 9999999;
-  top: 3.75rem;
-}
-.logo-white path {
-  fill: #FFFFFF;
-  transition: fill 0.8s ease-in-out;
-}
-.logo-purple path {
-  fill: #291644;
-  transition: fill 0.8s ease-in-out;
-}
-.footer {
-  width: 100%;
-}
-.footer-bottom {
-  height: 3.4375rem;
-  background-color: #291644;
+.menu-main--left {
+  width: 150px;
 }

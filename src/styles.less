@@ -88,7 +88,14 @@ a:active{
 .container {
     width: 100%;
 }
-
+.arrow {
+    &-back {
+        fill: @white;
+        :hover {
+            fill: #FFD700;
+        }
+    }
+}
 @import '../src/styles/fonts';
 @import '../src/styles/flex_classes';
 @import '../src/styles/buttons';

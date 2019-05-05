@@ -1,4 +1,16 @@
 @import 'variables';
+@keyframes shiny {
+  0% {
+    color: #FFD700;
+  }
+  50% {
+    color: #1a6b2c;
+
+  }
+  100% {
+    color: #FFD700;
+  }
+}
 //font size
 .font {
   // &-12 {
@@ -308,4 +320,7 @@
   //     }
   //   }
   // }
+}
+.shiny {
+  animation: shiny 1.5s ease-in-out infinite;
 }

@@ -1,21 +1,22 @@
 <div class="table flex flex-column align-items-center">
-  <div class="table-header flex align-items-center justify-content-center border background-grey-light">
-    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">Name</div>
-    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">Short name</div>
-    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">$ Value</div>
-    <div class="table-header-field text-center font-bold margin-xxl--right-10 border">last 24h</div>
-    <div class="table-header-field amount text-center font-bold margin-xxl--right-10 border">Amount you own</div>
-    <div class="table-header-field value text-center font-bold border">$ value of your coin</div>
+  <div class="table-header flex align-items-center justify-content-center border background-grey-mid">
+    <div class="table-header-field text-center font-bold margin-xxl--right-10">Name</div>
+    <div class="table-header-field text-center font-bold margin-xxl--right-10">Short name</div>
+    <div class="table-header-field text-center font-bold margin-xxl--right-10">$ Value</div>
+    <div class="table-header-field text-center font-bold margin-xxl--right-10">last 24h</div>
+    <div class="table-header-field amount text-center font-bold margin-xxl--right-10">Amount you own</div>
+    <div class="table-header-field value text-center font-bold">$ value of your coin</div>
   </div>
   <div *ngFor="let currency of curency_list; let i = index;">
     <div [ngClass]="{'background-white': i%2}"
-         class="table-row flex align-items-center background-grey-light">
+         class="table-row flex align-items-center background-grey-mid">
       <div class="table-row-field text-center margin-xxl--right-10 text-hover"
            (click)="openDetails(currency.id)">{{ currency.name }}</div>
       <div class="table-row-field text-center margin-xxl--right-10">{{ currency.symbol }}</div>
-      <div class="table-row-field text-center margin-xxl--right-10">$ {{ (currency.quote.USD.price).toFixed(2) }}</div>
-      <div [ngClass]="{'font-green': currency.quote.USD.percent_change_1h > 0, 'font-red': currency.quote.USD.percent_change_1h <= 0 }"
-           class="table-row-field text-center margin-xxl--right-10">{{ currency.quote.USD.percent_change_1h }} %</div>
+      <div class="table-row-field text-center margin-xxl--right-10">$ {{ format_number(currency.quote.USD.price) }}</div>
+      <div [ngClass]="{'font-green': format_number(currency.quote.USD.percent_change_24h) >= 0, 'font-red': format_number(currency.quote.USD.percent_change_24h) < 0 }"
+           class="table-row-field text-center margin-xxl--right-10">{{ format_number(currency.quote.USD.percent_change_24h) }}
+        %</div>
       <div class="table-row-field amount text-center margin-xxl--right-10">
         <div><input [(ngModel)]="my_quantity[i]"
                  ngDefaultControl
@@ -28,6 +29,13 @@
                   type="button">Submit</button></div>
       </div>
       <div class="table-row-field value text-center">$ {{ my_value[i] === 0 ? '0.00' : my_value[i].toFixed(2) }}</div>
+    </div>
+  </div>
+  <div class="flex align-items-center">
+    <div *ngFor="let in of pages; let i = index">
+      <div [ngClass]="{'font-bold': (page - 1) === i}"
+           class="font-14 text-center"
+           (click)="set_page(i+1)">{{i+1}}</div>
     </div>
   </div>
 </div>

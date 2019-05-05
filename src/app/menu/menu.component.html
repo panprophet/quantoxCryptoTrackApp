@@ -2,10 +2,21 @@
   <div class="menu-main--left font-24 margin-xxl--left-24">
     <div *ngIf="url === 'detail'"
          class="flex align-items-center">
-      <span class="text-hover"><img src="assets/images/arrow.svg"
-             (click)="back_to_list()"></span>
-      <span class="font-18 font-white">Go back</span>
+      <span class="flex align-items-center justify-content-center margin-xxl--right-24"
+            (click)="back_to_list()">
+        <svg width="36"
+             height="36"
+             viewBox="0 0 50 50"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+             class="arrow-back text-hover ">
+          <path d="M32.104 15.4375L22.5623 25L32.104 34.5625L29.1665 37.5L16.6665 25L29.1665 12.5L32.104 15.4375Z"
+                fill="#FFFFFF" />
+        </svg>
+      </span>
+      <span class="back font-18 font-white">Go back</span>
     </div>
   </div>
-  <div class="menu-main--right font-24 font-white margin-xxl--right-24">Marko Ilić Quantox test</div>
+  <div class="menu-main--right font-24 font-white margin-xxl--right-24"><span class="margin-xxl--right-60">Marko Ilić</span><span>Quantox
+      test</span></div>
 </div>

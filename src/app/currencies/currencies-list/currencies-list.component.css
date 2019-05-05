@@ -1,6 +1,10 @@
 .table {
   width: 100%;
   position: relative;
+  padding-top: 60px;
+}
+.table-header {
+  height: 30px;
 }
 .table-header-field {
   width: 120px;

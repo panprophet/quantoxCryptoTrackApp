@@ -1,5 +1,6 @@
 .single {
   position: relative;
+  padding-top: 60px;
 }
 .single-row {
   height: 60px;
