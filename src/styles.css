@@ -1915,6 +1915,9 @@ a:active {
 .border--bottom-grey-dark {
   border-bottom: 1px solid #383838;
 }
+.border--bottom-grey-mid {
+  border-bottom: 1px solid #383838;
+}
 .menu-main {
   height: 60px;
   position: relative;

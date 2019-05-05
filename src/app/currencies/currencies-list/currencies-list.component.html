@@ -31,22 +31,22 @@
       <div class="table-row-field value text-center">$ {{ my_value[i] === 0 ? '0.00' : my_value[i].toFixed(2) }}</div>
     </div>
   </div>
-  <div class="paginator flex align-items-center">
-    <div [ngClass]="{'font-bold': page === 1}"
-         class="paginator-page font-14 text-center text-hover"
+  <div class="paginator flex align-items-center margin-xxl--bottom-48">
+    <div [ngClass]="{'font-bold': page === 1, 'border--bottom-grey-mid': page === 1}"
+         class="paginator-page flex align-items-center justify-content-center font-14 text-center text-hover"
          (click)="set_page(1)">1</div>
-    <div [ngClass]="{'font-bold': page === 2}"
-         class="paginator-page font-14 text-center text-hover"
+    <div [ngClass]="{'font-bold': page === 2, 'border--bottom-grey-mid': page === 2}"
+         class="paginator-page flex align-items-center justify-content-center font-14 text-center text-hover"
          (click)="set_page(2)">2</div>
     <!-- </div> -->
-    <div [ngClass]="{'font-bold': page === 3}"
-         class="paginator-page font-14 text-center text-hover"
+    <div [ngClass]="{'font-bold': page === 3, 'border--bottom-grey-mid': page === 3}"
+         class="paginator-page flex align-items-center justify-content-center font-14 text-center text-hover"
          (click)="set_page(3)">3</div>
-    <div [ngClass]="{'font-bold': page === 4}"
-         class="paginator-page font-14 text-center text-hover"
+    <div [ngClass]="{'font-bold': page === 4, 'border--bottom-grey-mid': page === 4}"
+         class="paginator-page flex align-items-center justify-content-center font-14 text-center text-hover"
          (click)="set_page(4)">4</div>
-    <div [ngClass]="{'font-bold': page === 5}"
-         class="paginator-page font-14 text-center text-hover"
+    <div [ngClass]="{'font-bold': page === 5, 'border--bottom-grey-mid': page === 5}"
+         class="paginator-page flex align-items-center justify-content-center font-14 text-center text-hover"
          (click)="set_page(5)">5</div>
   </div>
 </div>
