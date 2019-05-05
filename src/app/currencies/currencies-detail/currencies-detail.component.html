@@ -3,26 +3,26 @@
     <div class="text-center font-bold font-32">Details about {{ currency.name }}</div>
   </div>
   <div class="single-row flex align-items-center justify-content-center w-80">
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Symbol</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Slug</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Rank</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Circulating supply</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Total supply</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Date added</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Symbol</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Slug</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Rank</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Circulating supply</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Total supply</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Date added</div>
   </div>
   <div class="single-row flex align-items-center justify-content-center w-80 background-grey-mid">
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency.symbol }}</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency.slug }}</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency.cmc_rank }}</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency.circulating_supply ? format_number(currency.circulating_supply) : '0.00' }}</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency.total_supply ? format_number(currency.total_supply) : '0.00' }}</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency?.date_added ? format_date(currency.date_added) : '0.00' }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency.symbol }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency.slug }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency.cmc_rank }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency.circulating_supply ? format_number(currency.circulating_supply) : '0.00' }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency.total_supply ? format_number(currency.total_supply) : '0.00' }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency?.date_added ? format_date(currency.date_added) : '0.00' }}</div>
   </div>
   <div class="single-row flex align-items-center justify-content-center w-80 text-center font-bold font-24"> Quotations
   </div>
   <div class="single-row flex align-items-center justify-content-center w-80 background-grey-mid">
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Last updated</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Market cap</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Last updated</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">Market cap</div>
     <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center font-bold">
       <div class="font-14 font-bold"> Precentage change</div>
       <div>
@@ -37,15 +37,15 @@
     <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center font-bold">Price</div>
   </div>
   <div class="single-row flex align-items-center justify-content-center w-80">
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency.last_updated ? format_date(currency.last_updated) : '' }}</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ currency['quote'].USD.market_cap ? format_number(currency.quote?.USD.market_cap) : '0.00' }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency.last_updated ? format_date(currency.last_updated) : '' }}</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">$ {{ currency['quote'].USD.market_cap ? format_number(currency['quote'].USD.market_cap) : '0.00' }}</div>
     <div [ngClass]="{'font-green': precentage_change() > 0, 'font-red': precentage_change() <= 0 }"
-         class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center">{{ precentage_change() }} %</div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ currency['quote'].USD.price ? format_number(currency.quote?.USD.price) : '' }}</div>
+         class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">{{ precentage_change() }} %</div>
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center">$ {{ currency['quote'].USD.price ? format_number(currency['quote'].USD.price) : '' }}</div>
   </div>
   <div class="single-row flex align-items-center justify-content-center w-80">
     <div class="single-row--cell margin-xxl--left-18 text-center font-bold text-center">Tags: </div>
-    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18  text-center flex justify-content-between">
+    <div class="single-row--cell margin-xxl--left-18 margin-xxl--right-18 text-center flex justify-content-between">
       <div *ngFor="let tag of currency.tags">
         <div [ngClass]="{'shiny': tag === 'mineable'}"
              class="text-center font-purple">{{ tag }}</div>

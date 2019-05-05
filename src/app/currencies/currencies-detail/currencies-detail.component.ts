@@ -16,11 +16,11 @@ import * as moment from 'moment';
 })
 export class CurrenciesDetailComponent implements OnInit, OnDestroy {
   private sub: Subscription;
-  curr_id: string;
+  curr_id: number;
 
   currencies: any [] = [];
   currency: any [] = [];
-  period = 1;
+  period: number = 1;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, public loaderService: LoaderService, private currenciesService: CurrenciesService ) { }
 
   ngOnInit() {
@@ -44,14 +44,14 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
     } else if ( this.period === 24 ) {
       return this.format_number(this.currency['quote'].USD.percent_change_24h);
     }
-
   }
   get_allData() {
     const get_all = new Promise((resolve, reject) => {
       this.subscribe_id().then(() => {
-        this.get_currency_details();
+        this.get_currency_details().then(() => {
+          resolve(true);
+        });
       });
-      resolve(true);
     });
     return get_all;
   }
@@ -71,15 +71,16 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
         data => {
           this.currencies = data['data'];
           this.currencies.forEach(currency => {
-            if ( currency.id === this.curr_id) {
-            this.currency = currency;
+            if ( currency.id == this.curr_id ) {
+              this.currency = currency;
+              resolve(true);
             }
           });
-          resolve(true);
           this.loaderService.viewLoader(false);
         },
         err => {
           console.log(err);
+          resolve(reject);
           this.loaderService.viewLoader(false);
         }
       );

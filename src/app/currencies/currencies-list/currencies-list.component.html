@@ -31,11 +31,11 @@
       <div class="table-row-field value text-center">$ {{ my_value[i] === 0 ? '0.00' : my_value[i].toFixed(2) }}</div>
     </div>
   </div>
-  <div class="flex align-items-center">
+  <!-- <div class="flex align-items-center">
     <div *ngFor="let in of pages; let i = index">
       <div [ngClass]="{'font-bold': (page - 1) === i}"
            class="font-14 text-center"
            (click)="set_page(i+1)">{{i+1}}</div>
     </div>
-  </div>
+  </div> -->
 </div>

@@ -10,7 +10,7 @@ import { LoaderService } from '../../loader/loader.service';
   templateUrl: './currencies-list.component.html',
   styleUrls: ['./currencies-list.component.css']
 })
-export class CurrenciesListComponent implements OnInit, OnDestroy {
+export class CurrenciesListComponent implements OnInit {
 
   curency_list: any[] = [];
   my_value: number[];
@@ -27,9 +27,6 @@ export class CurrenciesListComponent implements OnInit, OnDestroy {
         this.call_self();
       });
     });
-  }
-  ngOnDestroy() {
-
   }
   format_number(number) {
     const str_num = number.toString();
@@ -63,8 +60,6 @@ export class CurrenciesListComponent implements OnInit, OnDestroy {
       this.loaderService.viewLoader(true);
       this.currenciesService.get_currencies().subscribe(
         data => {
-          console.log(data['data']); // <- obrisi nemoj da zaboravis
-
           this.my_value = new Array(data['data'].length).fill(0);
           this.my_quantity = new Array(data['data'].length);
           this.curency_list = data['data'];
