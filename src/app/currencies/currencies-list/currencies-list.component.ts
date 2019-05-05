@@ -18,12 +18,12 @@ export class CurrenciesListComponent implements OnInit, OnDestroy {
 
   coin_value: any [] = [];
   pages: any = {};
-  page: number = 1;
+  page = 1;
   constructor(private currenciesService: CurrenciesService, public loaderService: LoaderService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.currencies_get().then(()=>{
-      this.get_value().then(()=>{
+    this.currencies_get().then(() => {
+      this.get_value().then(() => {
         this.call_self();
       });
     });
@@ -33,18 +33,18 @@ export class CurrenciesListComponent implements OnInit, OnDestroy {
   }
   format_number(number) {
     const str_num = number.toString();
-    if(str_num.indexOf('e') !== -1) {
+    if (str_num.indexOf('e') !== -1) {
       const new_num = str_num.split('e');
-      const exp = parseInt(new_num[1]);
+      const exp = parseInt(new_num[1], 10);
       return Math.pow(new_num[0], exp).toFixed(2);
     } else {
       return number.toFixed(2);
     }
   };
   call_self() {
-    setTimeout(()=>{
-      this.currencies_get().then(()=>{
-        this.get_value().then(()=>{
+    setTimeout(() => {
+      this.currencies_get().then(() => {
+        this.get_value().then(() => {
           this.call_self();
         });
       });
@@ -53,13 +53,13 @@ export class CurrenciesListComponent implements OnInit, OnDestroy {
   set_page(page) {
     this.page = page;
   }
-  showRow(index){
-    if(index >= (this.page-1)*10  && index <= this.page*10) {
+  showRow(index) {
+    if (index >= (this.page - 1) * 10  && index <= this.page * 10) {
       return true;
     }
   }
   async currencies_get() {
-    let get_em_all = new Promise((resolve, reject) => {
+    const get_em_all = new Promise((resolve, reject) => {
       this.loaderService.viewLoader(true);
       this.currenciesService.get_currencies().subscribe(
         data => {
@@ -68,8 +68,7 @@ export class CurrenciesListComponent implements OnInit, OnDestroy {
           this.my_value = new Array(data['data'].length).fill(0);
           this.my_quantity = new Array(data['data'].length);
           this.curency_list = data['data'];
-          // this.pages = Array(this.curency_list.length/10);
-          this.pages = Array(this.curency_list.length/10).map(function(value, index){return this.curency_list.length/10});
+          this.pages = Array(this.curency_list.length / 10).map(function(value, index) { return this.curency_list.length / 10; });
           resolve(true);
           this.loaderService.viewLoader(false);
         },
@@ -84,23 +83,23 @@ export class CurrenciesListComponent implements OnInit, OnDestroy {
   };
   calc_my_value(id) {
     this.curency_list.forEach((currency, index) => {
-      if(currency.id === id) {
+      if (currency.id === id) {
         this.my_value[index] = currency.quote.USD.price * this.my_quantity[index];
       }
-    })
+    });
   }
   save_value(currency_id, my_quantity) {
-    let value = {currency_id: currency_id, quantity: my_quantity};
+    const value = {currency_id: currency_id, quantity: my_quantity};
     this.coin_value.push(value);
     localStorage.setItem('coin_value', JSON.stringify(this.coin_value));
   }
   async get_value() {
-    let session = new Promise((resolve, reject) => {
-      if(JSON.parse(localStorage.getItem('coin_value'))){
+    const session = new Promise((resolve, reject) => {
+      if (JSON.parse(localStorage.getItem('coin_value'))) {
         this.coin_value = JSON.parse(localStorage.getItem('coin_value'));
         this.curency_list.forEach((currency, index) => {
-          for(let i = 0; i < this.coin_value.length; i++) {
-            if(currency.id === this.coin_value[i].currency_id) {
+          for (let i = 0; i < this.coin_value.length; i++) {
+            if (currency.id === this.coin_value[i].currency_id) {
               this.my_quantity[index] = this.coin_value[i].quantity;
               this.calc_my_value(currency.id);
             }

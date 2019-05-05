@@ -11,7 +11,7 @@ export class CurrenciesService {
 
   get_currencies() {
     const url = 'table/listing';
-    let params = new HttpParams().set('sort', 'price').set('limit', '50');
+    const params = new HttpParams().set('sort', 'price').set('limit', '50');
     return this.httpClient.get(this.url + url, { params: params });
   };
 /**
@@ -22,7 +22,7 @@ export class CurrenciesService {
   get_currency(currency_id) {
     const url = 'table/listing';
     const id = currency_id;
-    let params = new HttpParams().set('id', id);
+    const params = new HttpParams().set('id', id);
     return this.httpClient.get(this.url + url, { params: params });
-  }
+  };
 };

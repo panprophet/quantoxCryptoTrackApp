@@ -20,7 +20,7 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
 
   currencies: any [] = [];
   currency: any [] = [];
-  period: number = 1;
+  period = 1;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, public loaderService: LoaderService, private currenciesService: CurrenciesService ) { }
 
   ngOnInit() {
@@ -30,25 +30,25 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
   format_date(date) {
-    let newdate = moment(date).format("DD-MM-YYYY");
+    const newdate = moment(date).format('DD-MM-YYYY');
     return newdate;
   };
   format_number(number) {
     return number.toFixed(2);
   };
-  precentage_change(){
-    if(this.period === 1 ) {
+  precentage_change() {
+    if ( this.period === 1 ) {
       return this.format_number(this.currency['quote'].USD.percent_change_1h);
-    } else if(this.period === 7) {
+    } else if ( this.period === 7) {
       return this.format_number(this.currency['quote'].USD.percent_change_7d);
-    } else if (this.period === 24 ) {
+    } else if ( this.period === 24 ) {
       return this.format_number(this.currency['quote'].USD.percent_change_24h);
     }
 
   }
   get_allData() {
-    let get_all = new Promise((resolve, reject) => {
-      this.subscribe_id().then(()=>{
+    const get_all = new Promise((resolve, reject) => {
+      this.subscribe_id().then(() => {
         this.get_currency_details();
       });
       resolve(true);
@@ -56,22 +56,22 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
     return get_all;
   }
   async subscribe_id() {
-    let sub_id = new Promise((resolve, reject) => {
+    const sub_id = new Promise((resolve, reject) => {
       this.sub = this.activatedRoute.params.subscribe(values => {
         this.curr_id = values['currency_id'];
       });
       resolve(true);
-    })
+    });
     return sub_id;
   };
-  async get_currency_details(){
-    let get_it = new Promise((resolve, reject) => {
+  async get_currency_details() {
+    const get_it = new Promise((resolve, reject) => {
       this.loaderService.viewLoader(true);
       this.currenciesService.get_currencies().subscribe(
         data => {
           this.currencies = data['data'];
           this.currencies.forEach(currency => {
-            if(currency.id == this.curr_id) {
+            if ( currency.id === this.curr_id) {
             this.currency = currency;
             }
           });
@@ -86,5 +86,4 @@ export class CurrenciesDetailComponent implements OnInit, OnDestroy {
     });
     return get_it;
   };
-
 }
